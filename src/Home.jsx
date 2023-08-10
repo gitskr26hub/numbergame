@@ -26,7 +26,7 @@ const Home = () => {
   function StartGame() {
    // sessionStorage.removeItem("Gamedifficullty")
 
-    console.log(sessionStorage.getItem("Gamedifficullty"))
+    // console.log(sessionStorage.getItem("Gamedifficullty"))
 
     setTimeout(() => {
 

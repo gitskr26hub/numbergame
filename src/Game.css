@@ -8,7 +8,7 @@
     .wrap-drop{
         width: 80%;
         margin: auto;
-        padding: 1%;
+        
     }
 }
 
@@ -16,7 +16,7 @@
     .wrap-drop{
         width: 90%;
         margin: auto;
-        padding: 1%;
+       
     }
 }
 
@@ -24,26 +24,23 @@
 
 
 
-.number-list {
-    
+.number-list { 
     font-size: 25px;
     font-weight: bold;
-    color: black;
+    color: rgb(252, 241, 241);
     display: flex;
     flex-direction: column;
     align-items: center;
-  
-    margin:auto;
+    margin: 0 auto;
   }
   
   .number-item {
     font-size: 25px;
     background-color: white;
-    border: 1px solid #e1e1e1;
+    margin: 1px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 5px;
     padding: 1%;
-   
     cursor: grab;
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
@@ -71,14 +68,12 @@
   
   /* Styles for react-beautiful-dnd */
   .react-beautiful-dnd-drag-handle {
-    background-color: #e1e1e1;
     border-radius: 5px;
     width: 100%;
-   
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    /* margin-right: 5px; */
     cursor: grab;
   }
   
