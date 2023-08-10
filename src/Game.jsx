@@ -1,6 +1,4 @@
 
-
-/////////////////////////////////////////////////////////////
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -20,17 +18,17 @@ const Game = () => {
   const [time, setTime] = useState(gamedata?.timing);
   const [rightarr, setRightarr] = useState(sortArray(gamedata?.arr));
 
-  
-    const bottomEl = useRef(null);
 
-    const scrollToBottom = () => {
-      bottomEl?.current?.scrollIntoView({ behavior: 'smooth' });
-    };
+  const bottomEl = useRef(null);
 
-    // console.log(rightarr,list)
-    useEffect(()=>{
+  const scrollToBottom = () => {
+    bottomEl?.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // console.log(rightarr,list)
+  useEffect(() => {
     scrollToBottom()
-    },[])
+  }, [])
 
   useEffect(() => {
     if (time > 0) {
@@ -123,29 +121,29 @@ const Game = () => {
         </div>
       </div>
 
-      <motion.div 
-      //  initial={{ opacity: 1, y: '100vh' }}
-      //     animate={{ opacity: 1, y: 0 }}
-      //      transition={{ duration: 1, ease: 'easeInOut' }}
-       ref={bottomEl} 
-       className='wrap-drop' 
-       style={{  margin: "auto" }} 
+      <motion.div
+        //  initial={{ opacity: 1, y: '100vh' }}
+        //     animate={{ opacity: 1, y: 0 }}
+        //      transition={{ duration: 1, ease: 'easeInOut' }}
+        ref={bottomEl}
+        className='wrap-drop'
+        style={{ margin: "auto" }}
       >
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
             {(provided) => (
               <div className="number-list" ref={provided.innerRef} {...provided.droppableProps} >
                 {list.map((item, index) => (
-                  <Draggable  key={index} draggableId={`item-${index}`} index={index}>
+                  <Draggable key={index} draggableId={`item-${index}`} index={index}>
                     {(provided) => (
-                      <div 
+                      <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         className="number-item numbers"
                       >
-                       <span style={{color:"white"}}> 
-                       {index + 1}</span>{` -  `}{item}
+                        <span style={{ color: "white" }}>
+                          {index + 1}</span>{` -  `}{item}
                       </div>
                     )}
                   </Draggable>

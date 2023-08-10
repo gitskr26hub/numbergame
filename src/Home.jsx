@@ -24,7 +24,7 @@ const Home = () => {
 
 
   function StartGame() {
-   // sessionStorage.removeItem("Gamedifficullty")
+    // sessionStorage.removeItem("Gamedifficullty")
 
     // console.log(sessionStorage.getItem("Gamedifficullty"))
 
@@ -71,7 +71,7 @@ const Home = () => {
         sessionStorage.setItem("Gamedifficullty", JSON.stringify(payload))
       }
       // console.log(payload)
-     
+
 
 
       navigate("/game")
@@ -86,11 +86,11 @@ const Home = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
         className="login-form">
-          <motion.h1 style={{textAlign:"center",color:"orangered"}} initial={{ opacity: 0, y: '-100vh' }}
+        <motion.h1 style={{ textAlign: "center", color: "orangered" }} initial={{ opacity: 0, y: '-100vh' }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}>Number Game</motion.h1>
 
-        <motion.h2 style={{textAlign:"center"}} initial={{ opacity: 0, y: '-100vh' }}
+        <motion.h2 style={{ textAlign: "center" }} initial={{ opacity: 0, y: '-100vh' }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeInOut' }}> Select Difficulty Level</motion.h2>
 

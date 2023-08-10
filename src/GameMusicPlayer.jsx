@@ -9,22 +9,22 @@ import { motion } from 'framer-motion';
 
 import "./GameMusicPlayer.css"
 
-import {FaPlay,FaPause} from "react-icons/fa"
-import {GiNextButton,GiPreviousButton} from "react-icons/gi"
+import { FaPlay, FaPause } from "react-icons/fa"
+import { GiNextButton, GiPreviousButton } from "react-icons/gi"
 
 const songs = [
-    { title: 'Gaddiyan-Uchiya-Rakhiya', src: song1 },
-    { title: 'Kahani', src: song2 },
-    { title: 'man meri jan', src: song3 },
-    { title: 'Sajna Say Yes To The Dress', src: song4 },
-    { title: 'Calm Down', src: song5 },
-    { title: 'Despacito', src: song6 },
- 
-  ]; 
+  { title: 'Gaddiyan-Uchiya-Rakhiya', src: song1 },
+  { title: 'Kahani', src: song2 },
+  { title: 'man meri jan', src: song3 },
+  { title: 'Sajna Say Yes To The Dress', src: song4 },
+  { title: 'Calm Down', src: song5 },
+  { title: 'Despacito', src: song6 },
+
+];
 
 
 const GameMusicPlayer = () => {
- const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -37,7 +37,7 @@ const GameMusicPlayer = () => {
 
     const nextIndex = (currentSongIndex + 1) % songs.length;
     setCurrentSongIndex(nextIndex);
-   
+
   };
 
   const playPrevSong = () => {
@@ -61,26 +61,28 @@ const GameMusicPlayer = () => {
   };
 
   return (
-    <motion.div 
- 
-  whileTap={{ scale: 1.1 }}
-  drag="x"
-  dragConstraints={{ left: -25, right: 25 }}
+    <motion.div
 
-    className="music-player">
+      whileTap={{ scale: 1.1 }}
+      drag="x"
+      dragConstraints={{ left: -25, right: 25 }}
+
+      className="music-player">
       <h3>{songs[currentSongIndex].title}</h3>
 
-      <audio src={songs[currentSongIndex].src} ref={audioRef} controls autoPlay/>
-      
- 
+      <audio src={songs[currentSongIndex].src} ref={audioRef} controls autoPlay />
 
-      <div className="controls" style={{display:"flex",justifyContent:"space-between",
-    padding:"2%"}}>
-        <button className='button-91' style={{display:"flex"}} 
-        onClick={()=>playPrevSong()}><GiPreviousButton/></button>
-        <button className='play-btn' onClick={togglePlayPause}>  {isPlaying ? <FaPause/> : <FaPlay/>}</button>
-      
-        <button className='button-91'  onClick={()=>playNextSong()}><GiNextButton/></button>
+
+
+      <div className="controls" style={{
+        display: "flex", justifyContent: "space-between",
+        padding: "2%"
+      }}>
+        <button className='button-91' style={{ display: "flex" }}
+          onClick={() => playPrevSong()}><GiPreviousButton /></button>
+        <button className='play-btn' onClick={togglePlayPause}>  {isPlaying ? <FaPause /> : <FaPlay />}</button>
+
+        <button className='button-91' onClick={() => playNextSong()}><GiNextButton /></button>
       </div>
     </motion.div>
   );
