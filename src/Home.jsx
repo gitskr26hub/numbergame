@@ -82,8 +82,8 @@ const Home = () => {
   return (
     <div className="login-container">
       <motion.div
-        initial={{ opacity: 0, x: '100vh' }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: '100vh' }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
         className="login-form">
         <motion.h1 style={{ textAlign: "center", color: "orangered" }} initial={{ opacity: 0, y: '-100vh' }}

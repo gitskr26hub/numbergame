@@ -5,6 +5,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 import './Game.css'; // Create a separate CSS file for styling
 import './App.css'; // Create a separate CSS file for styling
+import Swal from 'sweetalert2';
 import successSound from "./MP3/success.mp3";
 import FailSound from "./MP3/fail.mp3";
 import buttonSound from './MP3/button2.mp3';
@@ -44,23 +45,32 @@ const Game = () => {
       }
       if (c === rightarr.length) {
         //   for won 
-        new Audio(successSound).play()
+        new Audio(successSound).play()  
         setList([])
         setRightarr([])
-      
-        
-        
-        setTimeout(() => {
+        // setTimeout(() => {
+         
+           
+        //    alert("❤️❤️❤️Congratulations❤️❤️❤️ You won the game")
+         
+        //   sessionStorage.removeItem("Gamedifficullty")
          
          
-           alert("❤️❤️❤️Congratulations❤️❤️❤️ You won the game")
+        //     navigate('/')
          
-          sessionStorage.removeItem("Gamedifficullty")
-         
-         
+        // }, 1000)
+
+           
+        Swal.fire({
+          title: '❤️❤️❤️Congratulations❤️❤️❤️ You won the game',
+          confirmButtonColor: 'red',
+         }).then((result) => {
+          if (result.isConfirmed) {
+           
+            sessionStorage.removeItem("Gamedifficullty")
             navigate('/')
-         
-        }, 1000)
+          }
+        })
       }
   
 
@@ -72,15 +82,29 @@ const Game = () => {
    
 
     if (time === 0) {
-      alert("Sorry 😞..!You Loose..!Please try Again😊😊😊😊😊😊")
-      new Audio(FailSound).play()
-      setList([])
-      setRightarr([])
-      //  loose
-     
     
-        sessionStorage.removeItem("Gamedifficullty")
-        navigate('/')
+      // alert("Sorry 😞..!You Loose..!Please try Again😊😊😊😊😊😊")
+      new Audio(FailSound).play()
+     
+      //  loose
+      Swal.fire({
+        title: 'Sorry 😞..!You Loose..!',
+        text: "Please try Again😊😊😊😊😊😊",
+       
+        
+        confirmButtonColor: 'red',
+       
+       
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setList([])
+          setRightarr([])
+          sessionStorage.removeItem("Gamedifficullty")
+          navigate('/')
+        }
+      })
+    
+      
       
      
     }
