@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import Swal from 'sweetalert2';
+
 import './Game.css'; // Create a separate CSS file for styling
 import './App.css'; // Create a separate CSS file for styling
 import successSound from "./MP3/success.mp3";
@@ -30,66 +30,64 @@ const Game = () => {
     scrollToBottom()
   }, [])
 
+
+
   useEffect(() => {
+    
     if (time > 0) {
       const timer = setInterval(() => {
         setTime(prevTime => prevTime - 1);
       }, 1000);
 
-      var c = 0
+      let c = 0
       for (let i = 0; i < rightarr.length; i++) {
         if (rightarr[i] === list[i]) c++
       }
-      if (c == rightarr.length) {
+      if (c === rightarr.length) {
         //   for won 
         new Audio(successSound).play()
+        setList([])
+        setRightarr([])
+      
+        
+        
         setTimeout(() => {
-          setList([])
-          setRightarr([])
-          Swal.fire({
-            title: '❤️❤️❤️Congratulations❤️❤️❤️ You won the game',
-
-            padding: '1em',
-            color: '#716add',
-            background: '#fff url("./Images/won.gif")',
-            background: ("./Images/won.gif"),
-            backdrop: `
-             rgba(0,0,123,0.4)
-             url("./Images/won.gif")
-             left top
-             no-repeat
-           `
-          })
+         
+         
+           alert("❤️❤️❤️Congratulations❤️❤️❤️ You won the game")
+         
           sessionStorage.removeItem("Gamedifficullty")
-
-
-          navigate('/')
+         
+         
+            navigate('/')
+         
         }, 1000)
       }
+  
 
       return () => {
         clearInterval(timer);
       };
     }
+
+   
+
     if (time === 0) {
-
+     
       new Audio(FailSound).play()
-      //  loose
-      Swal.fire('Sorry 😞..! You Loose..! Please try Again😊😊😊😊😊😊',)
-
       setList([])
       setRightarr([])
-      sessionStorage.removeItem("Gamedifficullty")
-
-      navigate('/')
-
+      //  loose
+      alert("Sorry 😞..!You Loose..!Please try Again😊😊😊😊😊😊")
+    
+        sessionStorage.removeItem("Gamedifficullty")
+        navigate('/')
+      
+     
     }
 
   }, [time]);
 
-  if (list.length === 0) {
-    navigate('/');
-  }
 
   const onDragEnd = (result) => {
     // Handle the drag and drop operation here
