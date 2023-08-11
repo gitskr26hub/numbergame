@@ -11,13 +11,12 @@ import buttonSound from './MP3/button2.mp3';
 import { motion } from 'framer-motion';
 
 const Game = () => {
-  const gamedata = JSON.parse(sessionStorage.getItem("Gamedifficullty"));
 
+  const gamedata = JSON.parse(sessionStorage.getItem("Gamedifficullty"));
   const [list, setList] = useState([...gamedata?.arr]);
   const navigate = useNavigate();
   const [time, setTime] = useState(gamedata?.timing);
   const [rightarr, setRightarr] = useState(sortArray(gamedata?.arr));
-
 
   const bottomEl = useRef(null);
 
@@ -73,12 +72,12 @@ const Game = () => {
    
 
     if (time === 0) {
-     
+      alert("Sorry 😞..!You Loose..!Please try Again😊😊😊😊😊😊")
       new Audio(FailSound).play()
       setList([])
       setRightarr([])
       //  loose
-      alert("Sorry 😞..!You Loose..!Please try Again😊😊😊😊😊😊")
+     
     
         sessionStorage.removeItem("Gamedifficullty")
         navigate('/')
